@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ram V R — Computer Science and Engineering student, developer and aspiring software engineer.">
+  <meta name="theme-color" content="#080b18">
+  <title>Ram V R | Portfolio</title>
+  <style>
+    :root {
+      --bg: #080b18; --panel: rgba(17, 23, 48, .78); --panel-solid: #111730;
+      --text: #f4f6ff; --muted: #a8b0cc; --blue: #5aa9ff; --purple: #a879ff;
+      --line: rgba(160, 177, 255, .16); --gradient: linear-gradient(110deg, #55b5ff, #a879ff);
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      color: var(--text); background:
+        radial-gradient(ellipse at 12% 8%, rgba(67, 111, 255, .16), transparent 34%),
+        radial-gradient(ellipse at 90% 28%, rgba(155, 91, 255, .13), transparent 32%), var(--bg);
+      font: 16px/1.7 Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(var(--max), calc(100% - 44px)); margin: auto; }
+    .nav-wrap { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(18px); background: rgba(8,11,24,.78); border-bottom: 1px solid var(--line); }
+    nav { min-height: 74px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { font-weight: 850; font-size: 1.25rem; letter-spacing: -.04em; }
+    .brand span { color: var(--blue); }
+    .nav-links { display:flex; align-items:center; gap:26px; color:var(--muted); font-size:.9rem; }
+    .nav-links a:hover { color:var(--text); }
+    .menu-btn { display:none; color:var(--text); background:none; border:1px solid var(--line); border-radius:10px; padding:7px 11px; }
+    .hero { min-height: 690px; display:grid; grid-template-columns: 1.25fr .75fr; align-items:center; gap:50px; padding:90px 0 100px; }
+    .eyebrow { color:#9ecbff; text-transform:uppercase; letter-spacing:.18em; font-size:.76rem; font-weight:800; }
+    h1 { font-size:clamp(3rem, 7vw, 5.8rem); line-height:1.02; letter-spacing:-.065em; margin:18px 0 24px; }
+    .gradient-text { background:var(--gradient); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .hero-copy { max-width:650px; color:var(--muted); font-size:1.1rem; }
+    .actions { display:flex; flex-wrap:wrap; gap:14px; margin-top:32px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; padding:12px 19px; border-radius:12px; font-weight:750; border:1px solid var(--line); transition:transform .25s, box-shadow .25s, border-color .25s; cursor:pointer; }
+    .btn:hover { transform:translateY(-3px); border-color:rgba(125,169,255,.55); box-shadow:0 12px 35px rgba(66,116,255,.15); }
+    .btn-primary { background:var(--gradient); color:#07101f; border:0; }
+    .btn-ghost { background:rgba(255,255,255,.035); }
+    .hero-card { position:relative; padding:32px; border:1px solid var(--line); border-radius:26px; background:linear-gradient(145deg, rgba(23,34,73,.88), rgba(14,17,39,.88)); box-shadow:0 30px 90px rgba(0,0,0,.3); overflow:hidden; }
+    .hero-card:before { content:""; position:absolute; width:220px; height:220px; border-radius:50%; background:rgba(94,139,255,.22); filter:blur(55px); top:-100px; right:-70px; }
+    .avatar { width:92px; height:92px; display:grid; place-items:center; border-radius:25px; background:var(--gradient); color:#081020; font-size:2rem; font-weight:900; margin-bottom:22px; position:relative; }
+    .hero-card h2 { font-size:1.35rem; margin-bottom:5px; position:relative; }
+    .hero-card p { color:var(--muted); position:relative; }
+    .status { display:inline-flex; align-items:center; gap:8px; margin-top:22px; color:#b9f5d0; font-size:.85rem; }
+    .dot { width:8px; height:8px; border-radius:50%; background:#50df91; box-shadow:0 0 12px #50df91; }
+    .quick-facts { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:25px; position:relative; }
+    .fact { padding:13px; background:rgba(255,255,255,.045); border:1px solid var(--line); border-radius:13px; }
+    .fact strong { display:block; font-size:1.05rem; }
+    .fact small { color:var(--muted); }
+    section { padding:78px 0; }
+    .section-head { margin-bottom:30px; }
+    .section-head h2 { font-size:clamp(2rem,4vw,3rem); letter-spacing:-.05em; line-height:1.15; margin-top:9px; }
+    .section-head p { color:var(--muted); margin-top:12px; max-width:650px; }
+    .grid { display:grid; gap:18px; }
+    .two-col { grid-template-columns:repeat(2,1fr); }
+    .three-col { grid-template-columns:repeat(3,1fr); }
+    .card { padding:25px; background:var(--panel); border:1px solid var(--line); border-radius:18px; transition:transform .25s,border-color .25s; }
+    .card:hover { transform:translateY(-5px); border-color:rgba(116,161,255,.45); }
+    .card h3 { font-size:1.1rem; margin-bottom:8px; }
+    .card p, .card li { color:var(--muted); }
+    .card ul { padding-left:18px; margin-top:10px; }
+    .tag-list { display:flex; flex-wrap:wrap; gap:9px; margin-top:16px; }
+    .tag { padding:6px 11px; border:1px solid rgba(115,151,255,.22); border-radius:999px; color:#c8d8ff; background:rgba(91,130,255,.08); font-size:.82rem; }
+    .timeline { border-left:1px solid rgba(112,153,255,.35); margin-left:8px; padding-left:25px; display:grid; gap:20px; }
+    .timeline-item { position:relative; }
+    .timeline-item:before { content:""; position:absolute; left:-31px; top:8px; width:11px; height:11px; border-radius:50%; background:var(--blue); box-shadow:0 0 15px rgba(85,181,255,.7); }
+    .timeline-item .meta { color:#9fc5ff; font-size:.84rem; margin-bottom:5px; }
+    .resume-panel { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:32px; border:1px solid rgba(133,147,255,.3); border-radius:22px; background:linear-gradient(110deg,rgba(56,105,211,.16),rgba(144,83,225,.14)); }
+    .resume-panel p { color:var(--muted); max-width:620px; margin-top:8px; }
+    .contact-card { text-align:center; padding:42px 25px; }
+    .contact-card p { max-width:600px; margin:10px auto 22px; }
+    footer { border-top:1px solid var(--line); padding:25px 0; color:var(--muted); font-size:.88rem; }
+    .footer-inner { display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap; }
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .muted { color:var(--muted); }
+    .placeholder-note { color:#f0c987 !important; font-size:.82rem; margin-top:12px; }
+    @media (max-width:800px) {
+      .hero { grid-template-columns:1fr; min-height:auto; padding:75px 0; gap:38px; }
+      .hero-card { max-width:520px; }
+      .three-col { grid-template-columns:repeat(2,1fr); }
+      .nav-links { display:none; position:absolute; top:74px; left:0; right:0; padding:18px 22px 24px; flex-direction:column; align-items:flex-start; background:#0c1125; border-bottom:1px solid var(--line); }
+      .nav-links.open { display:flex; }
+      .menu-btn { display:block; }
+    }
+    @media (max-width:560px) {
+      .container { width:min(100% - 32px,var(--max)); }
+      .two-col,.three-col { grid-template-columns:1fr; }
+      section { padding:60px 0; }
+      .resume-panel { align-items:flex-start; flex-direction:column; padding:25px; }
+      h1 { font-size:3.25rem; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      *,*::before,*::after { scroll-behavior:auto !important; transition:none !important; animation:none !important; }
+      .reveal { opacity:1; transform:none; }
+    }
+    @media print {
+      body { background:#fff !important; color:#111 !important; font:11pt/1.45 Arial,sans-serif; }
+      .nav-wrap,.hero,.no-print,footer { display:none !important; }
+      #resume-print { display:block !important; padding:0; }
+      #resume-print h1 { color:#111; font-size:26pt; margin:0 0 4px; }
+      #resume-print h2 { color:#222; font-size:15pt; border-bottom:1px solid #aaa; margin:16px 0 6px; }
+      #resume-print p,#resume-print li { color:#222 !important; }
+      #resume-print .tag-list { display:block; }
+      #resume-print .tag { border:0; color:#222; padding:0; }
+      #resume-print .tag:after { content:" · "; }
+      #resume-print .card { background:#fff; border:0; padding:0; }
+      #resume-print a { color:#111; }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap no-print">
+    <nav class="container">
+      <a class="brand" href="#home">RAM<span>.</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a>
+        <a href="#education">Education</a><a href="#resume">Resume</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+
+  <main>
+    <header class="container hero" id="home">
+      <div class="reveal">
+        <div class="eyebrow">Computer Science &amp; Engineering Student</div>
+        <h1>Hi, I'm <span class="gradient-text">Ram V R.</span></h1>
+        <p class="hero-copy">A curious CSE student who enjoys building things with technology, solving problems and continuously learning. I’m exploring opportunities to contribute, collaborate and grow through internships and real-world projects.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#projects">Explore my work <span>↗</span></a>
+          <a class="btn btn-ghost" href="#resume">View resume <span>↓</span></a>
+        </div>
+      </div>
+      <aside class="hero-card reveal">
+        <div class="avatar">RV</div>
+        <h2>Ram V R</h2>
+        <p>B.Tech · Computer Science and Engineering</p>
+        <div class="status"><span class="dot"></span> Open to learning &amp; internship opportunities</div>
+        <div class="quick-facts">
+          <div class="fact"><strong>Student</strong><small>Second year</small></div>
+          <div class="fact"><strong>CSE</strong><small>Area of study</small></div>
+          <div class="fact"><strong>Problem solving</strong><small>Growing every day</small></div>
+          <div class="fact"><strong>India</strong><small>Based in</small></div>
+        </div>
+      </aside>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal"><div class="eyebrow">A little about me</div><h2>Curious by nature.<br><span class="gradient-text">Driven to build.</span></h2></div>
+        <div class="grid two-col">
+          <article class="card reveal"><h3>Who I am</h3><p>I’m Ram, a second-year B.Tech Computer Science and Engineering student at Puducherry Technological University. I’m interested in software development, emerging technologies and using computing to solve practical problems.</p></article>
+          <article class="card reveal"><h3>What I’m looking for</h3><p>I’m keen to take part in internships, technical events and collaborative projects where I can apply what I learn, gain hands-on experience and contribute to a team.</p><p class="placeholder-note">Edit this section to add your specific career interests and goals.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head reveal"><div class="eyebrow">My toolkit</div><h2>Skills &amp; technologies</h2><p>A snapshot of technologies I’m learning and working with. Update the list to reflect your current proficiency.</p></div>
+        <div class="grid three-col">
+          <article class="card reveal"><h3>Programming</h3><div class="tag-list"><span class="tag">C</span><span class="tag">Python</span><span class="tag">Java</span></div></article>
+          <article class="card reveal"><h3>Web development</h3><div class="tag-list"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div></article>
+          <article class="card reveal"><h3>Tools &amp; concepts</h3><div class="tag-list"><span class="tag">Git &amp; GitHub</span><span class="tag">VS Code</span><span class="tag">Linux</span><span class="tag">Problem solving</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head reveal"><div class="eyebrow">Selected work</div><h2>Projects &amp; experience</h2><p>Showcase your strongest work here. Add a short explanation of the problem, your contribution and the technologies used.</p></div>
+        <div class="grid two-col">
+          <article class="card reveal"><h3>Project One — [Your project title]</h3><p>[Describe the problem your project solves, what you built and your individual contribution.]</p><div class="tag-list"><span class="tag">[Technology]</span><span class="tag">[Technology]</span></div><p class="placeholder-note">Replace this sample card with a real project and add its GitHub link.</p></article>
+          <article class="card reveal"><h3>Project Two — [Your project title]</h3><p>[Explain the key feature, how it works and what you learned while developing it.]</p><div class="tag-list"><span class="tag">[Technology]</span><span class="tag">[Technology]</span></div><p class="placeholder-note">Replace this sample card with a real project and add a live demo link if available.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-head reveal"><div class="eyebrow">Academic background</div><h2>Education &amp; activities</h2></div>
+        <div class="timeline reveal">
+          <div class="timeline-item"><div class="meta">[Start year] — Present</div><h3>B.Tech, Computer Science and Engineering</h3><p class="muted">Puducherry Technological University · Puducherry, India</p><p class="muted">Second-year student. Add your expected graduation year, CGPA (if you wish to share it) and relevant coursework.</p></div>
+          <div class="timeline-item"><div class="meta">[Year]</div><h3>[Hackathon / workshop / certification]</h3><p class="muted">[Organizer] · [Briefly describe your participation or achievement.]</p></div>
+          <div class="timeline-item"><div class="meta">[Year]</div><h3>[Additional achievement or responsibility]</h3><p class="muted">[Add a club role, technical event, volunteering experience or award.]</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resume">
+      <div class="container">
+        <div class="section-head reveal"><div class="eyebrow">Take my details with you</div><h2>Resume</h2></div>
+        <div class="resume-panel reveal">
+          <div><h3>Want a quick overview?</h3><p>Use the button to print this resume section or save it as a PDF. Update your contact details and achievements below before sharing it with recruiters.</p></div>
+          <button class="btn btn-primary" onclick="window.print()">Download resume PDF ↓</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="resume-print" style="display:none">
+      <div class="container">
+        <h1>Ram V R</h1>
+        <p>[Email address] · [Phone number] · [City, India] · [LinkedIn URL] · [GitHub URL]</p>
+        <h2>Profile</h2><p>Second-year B.Tech Computer Science and Engineering student at Puducherry Technological University, interested in software development, problem solving and emerging technologies. Seeking internship opportunities to gain practical experience and contribute to engineering teams.</p>
+        <h2>Education</h2><p><strong>B.Tech, Computer Science and Engineering</strong> — Puducherry Technological University, Puducherry, India<br>[Start year] – Present · Expected graduation: [Year] · CGPA: [Add if applicable]</p>
+        <h2>Technical skills</h2><p>C · Python · Java · HTML · CSS · JavaScript · Git/GitHub · VS Code · Linux [Edit to match your skills]</p>
+        <h2>Projects</h2><p><strong>[Project title]</strong> — [One or two lines describing the project, your contribution and technologies.]</p><p><strong>[Project title]</strong> — [One or two lines describing the project, your contribution and technologies.]</p>
+        <h2>Experience &amp; activities</h2><p>[Internships, hackathons, workshops, certifications, volunteering or technical activities. Add dates and organizers.]</p>
+        <h2>Links</h2><p>LinkedIn: [URL] · GitHub: [URL] · Portfolio: [This website URL]</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="card contact-card reveal">
+          <div class="eyebrow">Let's connect</div><h2>Have an opportunity or an idea?</h2>
+          <p class="muted">I’d be happy to connect, learn about opportunities and collaborate on interesting projects.</p>
+          <div class="actions" style="justify-content:center">
+            <a class="btn btn-primary" href="mailto:YOUR_EMAIL@example.com">Email me ↗</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/YOUR-LINKEDIN/" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="btn btn-ghost" href="https://github.com/YOUR-GITHUB" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+          <p class="placeholder-note">Replace the sample email, LinkedIn and GitHub URLs in this file before publishing.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="no-print"><div class="container footer-inner"><span>© <span id="year"></span> Ram V R. Built with curiosity.</span><a href="#home">Back to top ↑</a></div></footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
